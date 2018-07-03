@@ -37,11 +37,7 @@ class ShelterTable extends Component {
     });
   };
 
-  handleUpdate = (event) => {
-      if(counsleling && shelter_counseling === true){
-          fetch(`${APIURL}/shelters`)
-      }
-  }
+  
   
 
   render() {
