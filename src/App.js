@@ -3,7 +3,8 @@ import Sitebar from "./home/Navbar";
 import Auth from "./auth/Auth";
 import Splash from "./home/Splash";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import APIURL from './helpers/enviornment'
+import APIURL from '../src/helpers/enviornment';
+import './index.css';
 
 class App extends Component {
   constructor() {

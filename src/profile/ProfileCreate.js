@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import ShelterTable from 'react';
-import APIURL from './helpers/enviornment'
+import APIURL from '../helpers/enviornment'
+import ProfileIndex from "./ProfileIndex";
 
 
 class ProfileCreate extends Component {
@@ -9,14 +10,15 @@ class ProfileCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       firstName: "",
       lastName: "",
       userEmail: "",
-      phone_number: "",
+      phoneNumber: "",
       age: "",
       child: "",
-      counseling: "",
-      subCounseling: ""
+      counseling: "false",
+      subCounseling: "false"
     };
   }
 
@@ -28,9 +30,9 @@ class ProfileCreate extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`${APIURL}/user/createprofile`, {
+    fetch(`${APIURL}/profile/createprofile`, {
       method: "POST",
-      body: JSON.stringify({ log: this.state }),
+      body: JSON.stringify(this.state),
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: this.props.token
@@ -40,6 +42,7 @@ class ProfileCreate extends Component {
       .then(logData => {
         this.props.updateProfileArray();
         this.setState({
+          id:"",
           firstName: "",
           lastName: "",
           userEmail: "",
@@ -91,12 +94,12 @@ class ProfileCreate extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="phone_number">Phone Number</Label>
+            <Label for="phoneNumber">Phone Number</Label>
             <Input
-              id="phone_number"
+              id="phoneNumber"
               type="tel"
-              name="phone_number"
-              value={this.state.phone_number}
+              name="phoneNumber"
+              value={this.state.phoneNumber}
               placeholder="Enter Phone Number"
               onChange={this.handleChange}
             />
@@ -160,9 +163,8 @@ class ProfileCreate extends Component {
               <option value="false">No</option>
             </Input>
           </FormGroup>
-          <Button type="submit" color="primary">Submit</Button>
-          {/* //need a way to connect to shelters */}
-          <Button type="submit" color="warning">Update</Button>
+          <Button type="submit" value ="submit" color="primary">Submit</Button>
+          <Button type="submit" value ="update" color="warning">Update</Button>
           
         </Form>
       </div>

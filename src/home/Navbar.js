@@ -6,7 +6,9 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    Button } from "reactstrap";
+    Button, 
+    Jumbotron,
+    Container } from "reactstrap";
 
 class Sitebar extends Component {
   constructor(props) {

@@ -11,7 +11,7 @@ import {
   Table
 } from "reactstrap";
 import ProfileCreate from "./ProfileCreate";
-import APIURL from './helpers/enviornment'
+import APIURL from '../helpers/enviornment'
 
 class ShelterTable extends Component {
   constructor(props) {
@@ -27,7 +27,9 @@ class ShelterTable extends Component {
       zipCode: "",
       shelterContact: "",
       shelterCounseling: "",
-      shelterDrugCounseling: ""
+      shelterDrugCounseling: "",
+      capacity: "",
+      occupancy: ""
     };
   }
 
@@ -48,6 +50,7 @@ class ShelterTable extends Component {
         <Table striped>
           <thead>
             <tr>
+              <th>Shelter ID #</th>
               <th>Name</th>
               <th> Phone Number</th>
               <th>Email Address</th>
@@ -58,6 +61,8 @@ class ShelterTable extends Component {
               <th>Contact</th>
               <th>Emotional Counseling Available</th>
               <th>Drug Abuse Counseling Availabe</th>
+              <th>Capacity</th>
+              <th>Occupancy</th>
             </tr>
           </thead>
           <tbody>
@@ -75,8 +80,11 @@ class ShelterTable extends Component {
                   <td>{shelters.shelter_contact}</td>
                   <td>{shelters.shelter_counseling}</td>
                   <td>{shelters.shelter_drug_counseling}</td>
+                  <td>{shelters.capacity}</td>
+                  <td>{shelters.occupancy}</td>
                   <td>
-                    {/* <Button id={shelters.id} onClick={e => props.update(e, shelters)} color="warning">Update Shelters</Button> */}
+                    <Button id={shelters.id} onClick={this.props.delete}  color="danger">Delete Shelter</Button> 
+                    {/* <Button id={shelters.id} onClick={e => this.props.update(e,shelters)} color="warning">Update</Button> */}
                   </td>
                 </tr>
               );
