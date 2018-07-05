@@ -134,7 +134,7 @@ class ProfileCreate extends Component {
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="counseling">Do You Need Emotional Counseling?</Label>
+            <Label for="counseling">Do They Need Emotional Counseling?</Label>
             <Input
               type="select"
               name="counseling"
@@ -149,7 +149,7 @@ class ProfileCreate extends Component {
           </FormGroup>
           <FormGroup>
             <Label for="subCounseling">
-              Do You Need Substance Abuse Counseling?
+              Do They Need Substance Abuse Counseling?
             </Label>
             <Input
               type="select"
@@ -164,7 +164,6 @@ class ProfileCreate extends Component {
             </Input>
           </FormGroup>
           <Button type="submit" value ="submit" color="primary">Submit</Button>
-          <Button type="submit" value ="update" color="warning">Update</Button>
           
         </Form>
       </div>

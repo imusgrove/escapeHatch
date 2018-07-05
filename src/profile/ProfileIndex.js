@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import ProfileCreate from "./ProfileCreate";
 import ShelterTable from "./ShelterTable";
-import ProfileEdit from "./ProfileEdit";
 import APIURL from "../helpers/enviornment";
+import UpdatedShelter from "./UpdatedShelter";
 
 class ProfileIndex extends Component {
   constructor(props) {
@@ -18,27 +18,6 @@ class ProfileIndex extends Component {
       subCounseling: false
     };
   }
-
-  // profileUpdate = (event, profile) => {
-  //   fetch(`${APIURL}/profile/update/${event.target.id}`, {
-  //     method: "PUT",
-  //     body: JSON.stringify({ update: { id: event.target.id } }), 
-  //     headers: new Headers({
-  //       "Content-Type": "application/json",
-  //       Authorization: this.props.token
-  //     })
-  //   }).then(res => {
-  //     this.setState({ updatePressed: false });
-  //     this.setUpdatedProfile();
-  //   });
-  // };
-
-  // setUpdatedProfile = (event, profile) => {
-  //   this.setState({
-  //     profileToUpdate: profile,
-  //     updatePressed: true
-  //   });
-  // };
 
   componentWillMount() {
     this.fetchShelters();
@@ -94,7 +73,7 @@ class ProfileIndex extends Component {
         </Row>
         <Col md="12">
           {this.state.updatePressed ? (
-            <ProfileEdit
+            <UpdatedShelter
               t={this.state.updatePressed}
               update={this.profileUpdate}
               profile={this.state.profileToUpdate}
