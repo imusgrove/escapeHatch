@@ -5,8 +5,8 @@ switch (window.location.hostname){
     APIURL = 'http://localhost:3000';
     break;
 
-    case 'icd-escapehatchclient.herokuapp.com':
-    APIURL ='https://icd-escaptehatch.herokuapp.com'
+    case 'icd-escaptehatchclient.herokuapp.com':
+    APIURL ='https://icd-escapehatch.herokuapp.com'
     break;
 }
 
