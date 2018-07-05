@@ -19,26 +19,26 @@ class ProfileIndex extends Component {
     };
   }
 
-  profileUpdate = (event, profile) => {
-    fetch(`${APIURL}/profile/update/${event.target.id}`, {
-      method: "PUT",
-      body: JSON.stringify({ update: { id: event.target.id } }), 
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: this.props.token
-      })
-    }).then(res => {
-      this.setState({ updatePressed: false });
-      this.setUpdatedProfile();
-    });
-  };
+  // profileUpdate = (event, profile) => {
+  //   fetch(`${APIURL}/profile/update/${event.target.id}`, {
+  //     method: "PUT",
+  //     body: JSON.stringify({ update: { id: event.target.id } }), 
+  //     headers: new Headers({
+  //       "Content-Type": "application/json",
+  //       Authorization: this.props.token
+  //     })
+  //   }).then(res => {
+  //     this.setState({ updatePressed: false });
+  //     this.setUpdatedProfile();
+  //   });
+  // };
 
-  setUpdatedProfile = (event, profile) => {
-    this.setState({
-      profileToUpdate: profile,
-      updatePressed: true
-    });
-  };
+  // setUpdatedProfile = (event, profile) => {
+  //   this.setState({
+  //     profileToUpdate: profile,
+  //     updatePressed: true
+  //   });
+  // };
 
   componentWillMount() {
     this.fetchShelters();
