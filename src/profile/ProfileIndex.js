@@ -11,17 +11,24 @@ class ProfileIndex extends Component {
     this.state = {
       shelters: [],
       updatePressed: false,
-      shelterUpdate: {},
+      UpdatedShelter: {},
       profile: [],
-      profileToUpdate: {},
       counseling: false,
-      subCounseling: false
+      subCounseling: false,
+      shelterToUpdate: {}
     };
   }
 
   componentWillMount() {
     this.fetchShelters();
   }
+
+  setUpdatedShelter = (event, shelter) => {
+    this.setState({
+        shelterToUpdate: shelter, 
+        updatePressed: true 
+    })
+}
 
   fetchShelters = () => {
     fetch(`${APIURL}/shelter`, {
@@ -55,7 +62,7 @@ class ProfileIndex extends Component {
         <ShelterTable
           shelters={this.state.shelters}
           delete={this.shelterDelete}
-          update={this.state.shelterUpdate}
+          update={this.setUpdatedShelter}
         />
        : 
         <h2>Available Shelters</h2>
@@ -72,15 +79,13 @@ class ProfileIndex extends Component {
           <Col md="9">{shelters}</Col>
         </Row>
         <Col md="12">
-          {this.state.updatePressed ? (
+          {this.state.updatePressed ? 
             <UpdatedShelter
               t={this.state.updatePressed}
-              update={this.profileUpdate}
-              profile={this.state.profileToUpdate}
+              update={this.shelterUpdate}
+              shelter={this.state.shelterToUpdate}
             />
-          ) : (
-            <div />
-          )}
+           : <div></div>}
         </Col>
       </Container>
     );

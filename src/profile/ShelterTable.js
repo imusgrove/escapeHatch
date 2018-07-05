@@ -29,7 +29,9 @@ class ShelterTable extends Component {
       shelterCounseling: "",
       shelterDrugCounseling: "",
       capacity: "",
-      occupancy: ""
+      occupancy: "",
+      shelterToUpdate: "shelter", 
+      updatePressed: false 
     };
   }
 
@@ -39,6 +41,7 @@ class ShelterTable extends Component {
     });
   };
 
+ 
   
   
 
@@ -84,7 +87,7 @@ class ShelterTable extends Component {
                   <td>{shelters.occupancy}</td>
                   <td>
                     <Button id={shelters.id} onClick={this.props.delete}  color="danger">Delete Shelter</Button> 
-                    {/* <Button id={shelters.id} onClick={e => this.props.update(e,shelters)} color="warning">Update</Button> */}
+                    <Button id={shelters.id} onClick={e => this.props.update(e,shelters)} color="warning">Update</Button>
                   </td>
                 </tr>
               );

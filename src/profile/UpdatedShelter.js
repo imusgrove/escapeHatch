@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import React from "react";
 import {
   Button,
   Form,
@@ -12,11 +11,12 @@ import {
 } from "reactstrap";
 import APIURL from "../helpers/enviornment";
 
-class ProfileEdit extends React.Component {
+class UpdatedShelter extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+        id: "",
         shelterName: "",
         shelterNumber: "",
         email: "",
@@ -32,34 +32,34 @@ class ProfileEdit extends React.Component {
         occupancy: ""
     };
   }
-  componentWillMount() {
-    this.setState({
-        shelterName: this.props.shelter.shelterName,
-        shelterNumber: this.props.shelter.shelterName,
-        email: this.props.shelter.email,
-        address: this.props.shelter.address,
-        city: this.props.shelter.city,
-        state: this.props.shelter.state,
-        stateInit: this.props.shelter.stateInit,
-        zipCode: this.props.shelter.zipCode,
-        shelterContact: this.props.shelter.shelterContact,
-        shelterCounseling: this.props.shelter.shelterCounseling,
-        shelterDrugCounseling: this.props.shelter.shelterDrugCounseling,
-        capacity: this.props.shelter.capacity,
-        occupancy: this.props.shelter.occupancy
-    });
-  }
+//   componentWillMount() {
+//     this.setState({
+//         shelterName: this.props.shelter.shelterName,
+//         shelterNumber: this.props.shelter.shelterName,
+//         email: this.props.shelter.email,
+//         address: this.props.shelter.address,
+//         city: this.props.shelter.city,
+//         state: this.props.shelter.state,
+//         stateInit: this.props.shelter.stateInit,
+//         zipCode: this.props.shelter.zipCode,
+//         shelterContact: this.props.shelter.shelterContact,
+//         shelterCounseling: this.props.shelter.shelterCounseling,
+//         shelterDrugCounseling: this.props.shelter.shelterDrugCounseling,
+//         capacity: this.props.shelter.capacity,
+//         occupancy: this.props.shelter.occupancy
+//     });
+//   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event,shelter) => {
     event.preventDefault();
-    this.props.update(event, this.state);
-    fetch(`${APIURL}/shelter/update/:id`, {
+    // this.props.update(event, this.state);
+    fetch(`${APIURL}/shelter/update/${shelter.id}`, {
       method: "PUT",
       body: JSON.stringify({ shelter: this.state }),
       headers: new Headers({
@@ -69,7 +69,7 @@ class ProfileEdit extends React.Component {
     })
       .then(res => res.json())
       .then(logData => {
-        this.props.updateShelterArray();
+        // this.props.updateProfileArray();
         this.setState({
             shelterName: "",
             shelterNumber: "",
@@ -87,6 +87,21 @@ class ProfileEdit extends React.Component {
         });
       });
   };
+
+  shelterUpdate = (event, shelter) => {
+    fetch(`${APIURL}/shelter/update/${shelter.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ update: shelter }),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': this.props.token
+      })
+    })
+    .then((res) => {
+      this.setState({ updatePressed: false })
+      this.fetchShelters();
+    })
+  }
 
   render() {
     return (
@@ -214,17 +229,6 @@ class ProfileEdit extends React.Component {
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </Input>
-              </FormGroup>
-              <FormGroup>
-                <Label for="capacity">Capacity</Label>
-                <Input
-                  id="capacity"
-                  type="number"
-                  name="capacity"
-                  value={this.state.capacity}
-                  placeholder="Capacity"
-                  onChange={this.handleChange}
-                />
               </FormGroup>
               <FormGroup>
                 <Label for="capacity">Capacity</Label>
