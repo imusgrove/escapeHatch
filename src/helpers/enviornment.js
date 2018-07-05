@@ -6,7 +6,7 @@ switch (window.location.hostname){
     break;
 
     case 'icd-escapehatchclient.herokuapp.com':
-    APIURL ='https://icd-escapehatch.herokuapp.com'
+    APIURL ='https://icd-escapethatch.herokuapp.com'
     break;
 }
 
