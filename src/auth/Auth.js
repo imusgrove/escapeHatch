@@ -7,6 +7,7 @@ import Login from './Login';
 const Auth = (props) => {
     return (
         <Container className="auth-container">
+        <h1 href="/">Escape Hatch</h1>
             <Row>
                 <Col md="6">
                 <Signup setToken={props.setToken}/>

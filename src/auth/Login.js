@@ -34,9 +34,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className ="initial">
         <h1>Login</h1>
-        <h6>
+        <h6 className="lorem">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
           repellat, atque nulla, soluta vero reprehenderit numquam incidunt, rem
           quaerat quos voluptatum perferendis. Distinctio culpa iste atque

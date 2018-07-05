@@ -35,9 +35,9 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Sign Up</h1>
-        <h6>
+      <div className ="initial">
+        <h1 className="big">Sign Up</h1>
+        <h6 className="lorem">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
           repellat, atque nulla, soluta vero reprehenderit numquam incidunt, rem
           quaerat quos voluptatum perferendis. Distinctio culpa iste atque
@@ -64,7 +64,7 @@ class Signup extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="bottom">Submit</Button>
         </Form>
       </div>
     );

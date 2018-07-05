@@ -1,16 +1,36 @@
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: black;
+div{
+  /* background-color: rgb(71, 133, 255); */
+  text-align: center
 
 }
 
 .auth-container{
   font-family: 'Open Sans', sans-serif;
+  border-radius: 1em;
+  padding:5em;
   background-color: rgb(71, 133, 255);
+  border-top-left-radius: 7em;
+  border-bottom-right-radius: 7em;
 }
+
+.initial{
+  /* background-color: rgb(199, 205, 216); */
+
+}
+
+.lorem{
+  color: rgb(255, 198, 71)
+}
+
+h1{
+  text-shadow: 20em;
+  text-transform: uppercase;
+}
+
+input { 
+  text-align: center; 
+}
+
 
 /* .container{
 
@@ -18,7 +38,7 @@ body {
 } */
 
 .col-md-3{
-  background-color: rgb(71, 133, 255);
+  background-color: rgb(199, 205, 216);
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 15em;
   border-radius: 1em;
@@ -31,6 +51,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16 px;
   border-radius: 1em;
+  background-color: rgb(199, 205, 216);
+  
 
 }
 

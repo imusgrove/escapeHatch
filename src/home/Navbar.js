@@ -28,7 +28,7 @@ class Sitebar extends Component {
     return (
       <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">Escape Hatch</NavbarBrand>
+          <NavbarBrand href="/"></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
