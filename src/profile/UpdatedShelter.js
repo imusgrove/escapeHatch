@@ -15,81 +15,44 @@ class UpdatedShelter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = Object.assign({
         id: "",
-        shelterName: "",
-        shelterNumber: "",
+        shelter_name: "",
+        shelter_number: "",
         email: "",
         address: "",
         city: "",
         state: "",
-        stateInit: "",
-        zipCode: "",
-        shelterContact: "",
-        shelterCounseling: "",
-        shelterDrugCounseling: "",
+        state_init: "",
+        zip_code: "",
+        shelter_contact: "",
+        shelter_counseling: "",
+        shelter_drug_counseling: "",
         capacity: "",
         occupancy: ""
-    };
+    }, props.shelter)
+
   }
 //   componentWillMount() {
 //     this.setState({
-//         shelterName: this.props.shelter.shelterName,
-//         shelterNumber: this.props.shelter.shelterName,
+//         shelter_name: this.props.shelter.shelter_name,
+//         shelter_number: this.props.shelter.shelter_name,
 //         email: this.props.shelter.email,
 //         address: this.props.shelter.address,
 //         city: this.props.shelter.city,
 //         state: this.props.shelter.state,
-//         stateInit: this.props.shelter.stateInit,
-//         zipCode: this.props.shelter.zipCode,
-//         shelterContact: this.props.shelter.shelterContact,
-//         shelterCounseling: this.props.shelter.shelterCounseling,
-//         shelterDrugCounseling: this.props.shelter.shelterDrugCounseling,
+//         state_init: this.props.shelter.state_init,
+//         zip_code: this.props.shelter.zip_code,
+//         shelter_contact: this.props.shelter.shelter_contact,
+//         shelter_counseling: this.props.shelter.shelter_counseling,
+//         shelter_drug_counseling: this.props.shelter.shelter_drug_counseling,
 //         capacity: this.props.shelter.capacity,
 //         occupancy: this.props.shelter.occupancy
 //     });
 //   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  handleSubmit = (event,shelter) => {
-    event.preventDefault();
-    // this.props.update(event, this.state);
-    fetch(`${APIURL}/shelter/update/${shelter.id}`, {
-      method: "PUT",
-      body: JSON.stringify({ shelter: this.state }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: this.props.token
-      })
-    })
-      .then(res => res.json())
-      .then(logData => {
-        // this.props.updateProfileArray();
-        this.setState({
-            shelterName: "",
-            shelterNumber: "",
-            email: "",
-            address: "",
-            city: "",
-            state: "",
-            stateInit: "",
-            zipCode: "",
-            shelterContact: "",
-            shelterCounseling: "",
-            shelterDrugCounseling: "",
-            capacity: "",
-            occupancy: ""
-        });
-      });
-  };
-
-  shelterUpdate = (event, shelter) => {
-    fetch(`${APIURL}/shelter/update/${shelter.id}`, {
+shelterUpdate = (event,shelter) => {
+    fetch(`${APIURL}/shelter/update/${event.target.id}`, {
       method: 'PUT',
       body: JSON.stringify({ update: shelter }),
       headers: new Headers({
@@ -102,6 +65,47 @@ class UpdatedShelter extends React.Component {
       this.fetchShelters();
     })
   }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = (event) => {
+      console.log('handleSubmit', event, this.state, event.target)
+    event.preventDefault();
+    // this.props.update(event, this.state);
+    fetch(`${APIURL}/shelter/update/${this.state.id}`, {
+      method: "PUT",
+      body: JSON.stringify({ ...this.state }),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        Authorization: this.props.token
+      }
+    })
+      .then(res => res.json())
+      .then(logData => {
+        // this.props.updateProfileArray();
+        this.setState({
+            shelter_name: "",
+            shelter_number: "",
+            email: "",
+            address: "",
+            city: "",
+            state: "",
+            state_init: "",
+            zip_code: "",
+            shelter_contact: "",
+            shelter_counseling: "",
+            shelter_drug_counseling: "",
+            capacity: "",
+            occupancy: ""
+        });
+      });
+  };
+
+ 
 
   render() {
     return (
@@ -111,23 +115,23 @@ class UpdatedShelter extends React.Component {
           <ModalBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup>
-                <Label for="shelterName">Name</Label>
+                <Label for="shelter_name">Name</Label>
                 <Input
-                  id="shelterName"
+                  id="shelter_name"
                   type="text"
-                  name="shelterName"
-                  value={this.state.shelterName}
+                  name="shelter_name"
+                  value={this.state.shelter_name}
                   placeholder="Enter Name"
                   onChange={this.handleChange}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="shelterNumber">Phone Number</Label>
+                <Label for="shelter_number">Phone Number</Label>
                 <Input
-                  id="shelterNumber"
+                  id="shelter_number"
                   type="tel"
-                  name="shelterNumber"
-                  value={this.state.shelterNumber}
+                  name="shelter_number"
+                  value={this.state.shelter_number}
                   placeholder="Phone Number"
                   onChange={this.handleChange}
                 />
@@ -166,47 +170,47 @@ class UpdatedShelter extends React.Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="stateInit">State</Label>
+                <Label for="state_init">State</Label>
                 <Input
-                  id="stateInit"
+                  id="state_init"
                   type="text"
-                  name="stateInit"
-                  value={this.state.stateInit}
+                  name="state_init"
+                  value={this.state.state_init}
                   placeholder="State"
                   onChange={this.handleChange}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="zipCode">Zip Code</Label>
+                <Label for="zip_code">Zip Code</Label>
                 <Input
-                  id="zipCode"
+                  id="zip_code"
                   type="number"
-                  name="zipCode"
-                  value={this.state.zipCode}
+                  name="zip_code"
+                  value={this.state.zip_code}
                   placeholder="Zip Code"
                   onChange={this.handleChange}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="shelterContact">Contact</Label>
+                <Label for="shelter_contact">Contact</Label>
                 <Input
-                  id="shelterContact"
+                  id="shelter_contact"
                   type="text"
-                  name="shelterContact"
-                  value={this.state.shelterContact}
+                  name="shelter_contact"
+                  value={this.state.shelter_contact}
                   placeholder="Contact"
                   onChange={this.handleChange}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="shelterCounseling">
+                <Label for="shelter_counseling">
                   Emotional Counseling?
                 </Label>
                 <Input
                   type="select"
-                  name="shelterCounseling"
-                  id="shelterCounseling"
-                  value={this.state.shelterCounseling}
+                  name="shelter_counseling"
+                  id="shelter_counseling"
+                  value={this.state.shelter_counseling}
                   onChange={this.handleChange}
                   placeholder="Choose Yes or No"
                 >
@@ -215,14 +219,14 @@ class UpdatedShelter extends React.Component {
                 </Input>
               </FormGroup> 
               <FormGroup>
-                <Label for="shelterDrugCounseling">
+                <Label for="shelter_drug_counseling">
                   Substance Abuse Counseling?
                 </Label>
                 <Input
                   type="select"
-                  name="shelterDrugCounseling"
-                  id="shelterDrugCounseling"
-                  value={this.state.shelterDrugCounseling}
+                  name="shelter_drug_counseling"
+                  id="shelter_drug_counseling"
+                  value={this.state.shelter_drug_counseling}
                   onChange={this.handleChange}
                   placeholder="Choose Yes or No?"
                 >

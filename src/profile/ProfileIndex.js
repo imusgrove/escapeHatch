@@ -82,6 +82,7 @@ class ProfileIndex extends Component {
           {this.state.updatePressed ? 
             <UpdatedShelter
               t={this.state.updatePressed}
+              token={this.props.token}
               update={this.shelterUpdate}
               shelter={this.state.shelterToUpdate}
             />
