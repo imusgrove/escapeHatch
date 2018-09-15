@@ -70,7 +70,7 @@ class ProfileIndex extends Component {
     return (
       <Container>
         <Row>
-          <Col md="3">
+          <Col md="2 col">
             <ProfileCreate
               token={this.props.token}
               updateProfileArray={this.fetchShelters}

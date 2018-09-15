@@ -32,10 +32,11 @@ input {
 }
 
 
-/* .container{
+.container{
 
-  background-color: rgb(71, 133, 255);
-} */
+  background-color: rgb(157, 71, 255);
+
+}
 
 .col-md-3{
   background-color: rgb(199, 205, 216);
@@ -45,6 +46,9 @@ input {
   font-size: 16 px;
   padding-bottom: 2em;
   text-align: center;
+  clear: both;
+  float: left;
+  padding-right: 50rem
 }
 
 .col-md-9{
@@ -52,6 +56,8 @@ input {
   font-size: 16 px;
   border-radius: 1em;
   background-color: rgb(199, 205, 216);
+  clear: both;
+  float: right;
   
 
 }
